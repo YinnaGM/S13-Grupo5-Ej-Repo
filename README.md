@@ -1,2 +1,2 @@
-# s13-ejemplo-repo-Grupo5
-Repositorio de ejemplo para el grupo S13 grupo 5 de Misión Tic
+# S13-Grupo5-Proyecto-repo
+Repositorio del proyecto para el grupo S13 grupo 5 de Misión Tic 2022
