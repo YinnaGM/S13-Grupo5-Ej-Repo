@@ -1,2 +1,2 @@
-# S13-Grupo5-Proyecto-repo
+# S13-Grupo5-Proyecto-Repo
 Repositorio del proyecto para el grupo S13 grupo 5 de Misión Tic 2022
