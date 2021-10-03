@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <h1>Crea tu perfil</h1>
+    <form action="{{url_for('/create_profile/user>')}}" method="post">
+        <h5>Ingresa los siguientes datos</h5>
+        <div>
+            <select name="sex" placeholder="Sexo">
+                <option>Mujer</option>
+                <option>Hombre</option>
+            </select>
+        </div>
+        <div>
+            <input type="number" name="age" placeholder="Age">
+        </div>
+        <div>
+            <input type="number" name="height" placeholder="Altura (m)" step="any">
+        </div>
+        <div>
+            <input type="number" name="weight" placeholder="Peso (kg)" step="any">
+        </div>
+        <div>
+            <select name="insulin_type" placeholder="Tipo de insulina">
+                <option>Humulin R</option>
+                <option>Novolin R</option>
+                <option>Glulisina (Apidra)</option>
+                <option>Lispro (Humalog)</option>
+                <option>Aspart (Novolog)</option>
+                <option>Glargina (Lantus/Toujeo Solostar)</option>
+                <option>Detemir (Levemir)</option>
+                <option>Degludec (Tresiba)</option>
+                <option>NPH (Humulin N/Novolin N)</option>
+            </select>
+        </div>
+        <div>
+            <input type="number" name={{user}} placeholder="Usuario">
+        </div>
+        <div>
+            <button>Submit</button>
+        </div>
+    </form>
+
+</body>
+</html>

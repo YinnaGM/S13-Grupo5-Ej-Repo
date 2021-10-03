@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabet</title>
+    <link rel="shortcut icon" href="{{url_for('static',filename='Diabet.ico')}}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcnd.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!--Reglas de estilo-->
+
+    <style type ="text/css">
+        .login-page {
+          width: 10 px;
+          padding: 10% 0 0;
+          margin: auto;
+        }
+        .form {
+          position: relative;
+          z-index: 0;
+          background: #FFFFFF;
+          max-width: 360px;
+          margin: 0 auto 20px;
+          padding: 50px;
+          text-align: center;
+          box-shadow: 0 0 200px 50 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        }
+        
+        .form input {
+          font-family: "Roboto", sans-serif;
+          outline: 0;
+          background: #f2f2f2;
+          width: 100%;
+          border: 10;
+          margin: 0 0 15px;
+          padding: 10px;
+          box-sizing: border-BOX;
+          font-size: 14px;  
+        }
+        .form button {
+          font-family: "Roboto", sans-serif;
+          text-transform: uppercase;
+          outline: 0;
+          background: #4CAF50;
+          width: 100%;
+          border: 0;
+          padding: 15px;
+          color: #FFFFFF;
+          font-size: 14px;
+          -webkit-transition: all 0.3 ease;
+          transition: all 0.3 ease;
+          cursor: pointer;
+        }
+        .form button:hover,.form button:active,.form button:focus {
+          background: #43A047;
+        }
+        .form .message {
+          margin: 25px 0 0;
+          color: #b3b3b3;
+          font-size: 15px;
+        }
+        .form .message a {
+          color: #130227;
+          text-decoration: none;
+        }
+        .form .register-form {
+          display: none;
+        }
+        .container {
+          position: right;
+          z-index: 1;
+          max-width: 300px;
+          
+        }
+        .container:before, .container:after {
+          content: "";
+          display: block;
+          clear: both;
+        }
+        .container .info {
+          margin: 50px auto;
+          text-align: center;
+        }
+        .container .info h1 {
+          margin: 0 0 15px;
+          padding: 0;
+          font-size: 36px;
+          font-weight: 300;
+          color: #1a1a1a;
+        }
+        .container .info span {
+          color: #4d4d4d;
+          font-size: 12px;
+        }
+        .container .info span a {
+          color: #000000;
+          text-decoration: none;
+        }
+        .container .info span .fa {
+          color: #EF3B3A;
+        }
+
+        body {
+          background: hsl(278, 78%, 25%); /* fallback for old browsers */
+          background: -webkit-linear-gradient(right, hsl(270, 79%, 22%), #ae8bdb);
+          background: -moz-linear-gradient(right, hsl(270, 84%, 20%), #a887d4);
+          background: -o-linear-gradient(right, hsl(270, 87%, 18%), #f3e9ff);
+          background: linear-gradient(to left, hsl(270, 79%, 29%), #cb8bff);
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;      
+        }
+</style>
+
+<!--Codigp javaScrip-->
+
+  <script type="text/javaScript">
+    $(document).ready(function()
+    {
+      $('.message a').click(function() {
+        $('form').animate({heigth:"toggle",opacity:"togle"},"slow");
+        $('#idMensajeError');
+      });
+    });
+ </script>
+ </head>
+
+ <body>
+    <div class="alert alert-success">
+      <strong> Bienvenido </strong> Registrate - Ingresa al sistema.
+           Este es el inicio de la página, donde encontraras noticias y articulos relacionados a la diabetes tipo 1
+    </div>
+    <div class="login-page">
+      <div class="form">
+        <form class="register-form" action="{{url_for('create_user')}}" method="post">
+          <h5>Enter the user email and password</h5>
+          <div><input type="text" name="name" placeholder="Nombre"></div>
+          <div><input type="email" name="email" placeholder="Email"></div>
+          <div><input type="password" name="password" placeholder="Password"></div>
+          <div>
+            <button type ="submit"> Registrar</button>
+            <p class="message"> Ya estas resgistrado? <a href='/login'> Iniciar sesion</a></p>
+          </div>
+        </form>
+        <form class="login-form" action="{{url_for('check_user')}}" method="post">
+          <div><input type="email" name="email" required placeholder="Email"/> </div>
+          <div><input type="password"  name="password" required placeholder="Password"/></div>
+          <div>
+            <button type ="submit">Ingresar</button>
+            <p class="message">¿No estas registrado? <a href='/register'>Registrate</a></p>
+          </div>
+        </form>
+
+
+      </div>
+    </div>
+  </body>
+    
+</html>
