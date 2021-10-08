@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabet</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        /* Style the header */
+        header {
+          background-color: rgb(88, 79, 209);
+          padding: 10px;
+          text-align: center;
+          font-size: 35px;
+          color: white;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <header>
+    <h2>Raciones de HC en medida de consumo habitual</h2>
+    </header>
+    <form class="Profile" action="add_food" method='post'>
+        <h5>Ingresa los siguientes datos</h5>
+        <div>
+            <input type="text" name="name" required  placeholder="Alimento">
+        </div>
+        <div>
+            <select  type="text" name="category"  placeholder="Categoria">
+                <option>Lacteos</option>
+                <option>Carnes</option>
+                <option>Leguminosas</option>
+                <option>Cereales</option>
+                <option>Frutas</option>
+                <option>Verduras</option>
+                <option>Snacks</option>
+                <option>Bebidas</option>
+                <option>Dulces</option>
+                <option>Semillas</option>
+                <option>Tuberculos</option>
+
+            </select>
+        </div>
+        <div>
+            <input type="number" name="quantity" required  placeholder="Cantidad (gramos)">
+        </div>
+        <div>
+            <input type="number" name="carbohydrate" required placeholder="Carbohidrato" step="Any">
+        </div>
+          
+        <div>
+            <button>Submit</button>
+        </div>
+        <div>
+            <button><a class="nav-link" href="/admin">atras</a></button>
+        </div>
+</body>
+</html>

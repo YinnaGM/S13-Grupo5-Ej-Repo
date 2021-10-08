@@ -30,6 +30,7 @@
         }
         
         .form input {
+
           font-family: "Roboto", sans-serif;
           outline: 0;
           background: #f2f2f2;
@@ -73,7 +74,6 @@
           position: right;
           z-index: 1;
           max-width: 300px;
-          
         }
         .container:before, .container:after {
           content: "";
@@ -104,19 +104,24 @@
         }
 
         body {
-          background: hsl(278, 78%, 25%); /* fallback for old browsers */
-          background: -webkit-linear-gradient(right, hsl(270, 79%, 22%), #ae8bdb);
+          background: hsl(180, 14%, 94%); /* fallback for old browsers */
+          background: -webkit-linear-gradient(right, hsl(260, 13%, 95%), #ae8bdb);
           background: -moz-linear-gradient(right, hsl(270, 84%, 20%), #a887d4);
           background: -o-linear-gradient(right, hsl(270, 87%, 18%), #f3e9ff);
           background: linear-gradient(to left, hsl(270, 79%, 29%), #cb8bff);
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;      
         }
+        h1{
+        font-size: 50px;
+        color: #03C;
+        }
 </style>
 
 <!--Codigp javaScrip-->
 
   <script type="text/javaScript">
+
     $(document).ready(function()
     {
       $('.message a').click(function() {
@@ -128,34 +133,36 @@
  </head>
 
  <body>
-    <div class="alert alert-success">
+    
+  <div class="alert alert-success">
       <strong> Bienvenido </strong> Registrate - Ingresa al sistema.
            Este es el inicio de la página, donde encontraras noticias y articulos relacionados a la diabetes tipo 1
+  </div>
+    <div class="form">
+      <form class="register-form" action="{{url_for('create_user')}}" method="post">
+        <h5>Enter the user email and password</h5> 
+        <div><input type="text" name="name" required placeholder="Nombre"></div>
+        <div><input type="email" name="email" required  placeholder="Email"></div>
+        <div><input type="password" name="password" required  placeholder="Password"></div>
+        <div>
+          <button type ="submit"> Registrar</button>
+          <p class="message"> Ya estas resgistrado? <a href='/login'> Iniciar sesion</a></p>
+        </div>
+      </form>
+      <form class="login-form" action="{{url_for('check_user')}}" method="post">
+        <div><input type="email" name="email" required placeholder="Email"/> </div>
+        <div><input type="password"  name="password" required placeholder="Password"/></div>
+        <div>
+          <button type ="submit">Ingresar</button>
+          <p class="message">¿No estas registrado? <a href='/register'>Registrate</a></p>
+        </div>
+       
+     
+      </form>
+     
+      
     </div>
-    <div class="login-page">
-      <div class="form">
-        <form class="register-form" action="{{url_for('create_user')}}" method="post">
-          <h5>Enter the user email and password</h5>
-          <div><input type="text" name="name" placeholder="Nombre"></div>
-          <div><input type="email" name="email" placeholder="Email"></div>
-          <div><input type="password" name="password" placeholder="Password"></div>
-          <div>
-            <button type ="submit"> Registrar</button>
-            <p class="message"> Ya estas resgistrado? <a href='/login'> Iniciar sesion</a></p>
-          </div>
-        </form>
-        <form class="login-form" action="{{url_for('check_user')}}" method="post">
-          <div><input type="email" name="email" required placeholder="Email"/> </div>
-          <div><input type="password"  name="password" required placeholder="Password"/></div>
-          <div>
-            <button type ="submit">Ingresar</button>
-            <p class="message">¿No estas registrado? <a href='/register'>Registrate</a></p>
-          </div>
-        </form>
-
-
-      </div>
-    </div>
-  </body>
-    
+  </div>
+</body>
+  
 </html>
