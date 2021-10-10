@@ -138,18 +138,18 @@ def Insulin_calculation():
 def type_food():
   return render_template("type_food.html")
 
-@app.route('/add_food',methods=['GET','POST'])
+@app.route('/add_food',methods=['POST'])
 def add_food():
     name = request.form["name"]
     category = request.form["category"] 
     quantity = request.form["quantity"]
     carbohydrate= request.form["carbohydrate"]
-    admin_id = session['Admin.id']
 
-    type_food =Type_food( name,category,quantity,carbohydrate,admin_id )
+    type_food =Type_food( name,category,quantity,carbohydrate )
     db.session.add(type_food)
-    db.session.commit()  
-    session.pop('Admin.id', None)
+    db.session.commit() 
+     
+    session.pop('admin_id', None)
     return "Su registro se creo con exito"
 
 #Rutas de ingreso administrador
@@ -157,35 +157,32 @@ def add_food():
 def admin():
   return render_template("index_admin.html")
 
+#Ruta para las transacciones del administrador
+@app.route('/admin/transactions')
+def admin_transactions():
+  return render_template("crud_admin.html")
+
+#Ruta para las Agregar nuevo administrador
 @app.route('/crud_admin', methods=['GET','POST'])
 def crud_admin():
-    if request.method == 'GET':
-        email = "correo_Admin@gmail.com"
-        password = "admin"
+        email =request.form['email']
+        password = request.form['password']
         entry = Admin(email, password)
         db.session.add(entry)
         db.session.commit()
-        return 'Esto fue un GET'
-    elif request.method == 'POST':
-        # Registrar un admin
-        request_data = request.form
-        email = request_data['email']
-        password = request_data['password']
+        flash("Se registro el admin exitosamente","alert-warning")
+        return admin_transactions()
 
-        print("Correo:" + email)
-        print("Contraseña:" + password)
-
-        # Insertar en la base de datos la canción
-        return 'Se registro el admin exitosamente'
-
+# Ruta para Actualizar nuevo administrador
 @app.route('/updateadmin',methods=['GET','POST'])
 def update_admin():
-    old_email = "admin@vis.com"
-    new_email = "ad@vis.com"
+    old_email = request.form['old_email']
+    new_email = request.form['new_email']
     old_admin = Admin.query.filter_by(email = old_email).first()
     old_admin.email = new_email
     db.session.commit()
-    return "Actualización exitosa"
+    flash("Se actualizo el admin exitosamente","alert-warning")
+    return admin_transactions()
 
 @app.route('/getadmins')
 def get_admins():
@@ -193,10 +190,13 @@ def get_admins():
     print(admins[0].email)
     return "Se trajo la lista de administradores registrados"
 
-@app.route('/deleteadmin')
+# Ruta para Eliminar administrador
+@app.route('/deleteadmin',methods=['GET','POST'])
 def delete_admin():
-    admin_email = "ad@vis.com"
+    admin_email = request.form['email']
     admin = Admin.query.filter_by(email = admin_email).first()
+    print(admin_email)
     db.session.delete(admin)
     db.session.commit()
-    return "Se eliminó el administrador"
+    flash("El Administrador se ha eliminado con exito","alert-warning")
+    return admin_transactions()
